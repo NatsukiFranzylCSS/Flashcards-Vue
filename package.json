@@ -3,40 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && electron-builder",
-    "preview": "vite preview"
+    "build:web": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "build": "tauri build"
   },
   "dependencies": {
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4",
     "@vitejs/plugin-vue": "^5.0.4",
-    "electron": "^44.7.0",
-    "electron-builder": "^26.15.3",
-    "vite": "^5.2.0",
-    "vite-plugin-electron": "^0.28.8",
-    "vite-plugin-electron-renderer": "^1.0.0"
-  },
-  "build": {
-    "appId": "com.agentic.flashcards",
-    "productName": "VueFlashcards",
-    "directories": {
-      "output": "release"
-    },
-    "linux": {
-      "target": [
-        "AppImage"
-      ],
-      "category": "Education"
-    },
-    "files": [
-      "dist",
-      "dist-electron",
-      "package.json"
-    ]
+    "vite": "^5.2.0"
   },
   "author": "Natsuki <natsuki@example.com>",
   "description": "Vue Flashcards App",

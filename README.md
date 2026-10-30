@@ -1,6 +1,6 @@
 # Agentic Vue Flashcards
 
-A lightweight, clean desktop flashcard application built with Vue 3, Vite, and Electron. 
+A lightweight, clean desktop flashcard application built with Vue 3, Vite, and Tauri. 
 
 ## Features
 - **JSON Powered**: Empty by default. Just upload a `.json` file containing an array of `{ term: "", definition: "" }` objects to instantly load your deck. Perfect for having AI generate study materials for you.
@@ -20,39 +20,35 @@ A lightweight, clean desktop flashcard application built with Vue 3, Vite, and E
 ]
 ```
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) and npm
+- [Rust](https://www.rust-lang.org/tools/install) (stable)
+- Platform-specific Tauri dependencies: see the [Tauri prerequisites guide](https://v2.tauri.app/start/prerequisites/)
+
 ## Development Setup
 
-To run the app in development mode (with hot-reloading):
+To run the desktop app in development mode (with hot-reloading):
 
 ```bash
 npm install
-npm run dev
+npm run tauri:dev
 ```
+
+To run just the web frontend in a browser: `npm run dev`.
 
 ## Building the Desktop App
 
-This project uses `electron-builder` to package the web code into standalone native desktop executables. The output files will be placed in the `release/` folder.
+This project uses [Tauri v2](https://v2.tauri.app/) to package the web code into small, native desktop apps. Output is placed in `src-tauri/target/release/bundle/`.
 
-### Build for Windows (.exe)
-*Note: It is highly recommended to run this command on a Windows machine.*
-```bash
-npm run build -- --win
-```
+Tauri does not cross-compile, so build on the OS you are targeting:
 
-### Build for macOS (.dmg)
-*Note: You must run this command on an actual Mac to properly package macOS applications.*
-```bash
-npm run build -- --mac
-```
+- **macOS** (`.app`, `.dmg`)
+- **Windows** (`.msi`, `.exe`)
+- **Linux** (`.deb`, `.rpm`, `.AppImage`)
 
-### Build for Linux (.AppImage)
-*Note: Run this on a Linux machine.*
-```bash
-npm run build -- --linux
-```
-
-### Build for your current OS (Default)
-Running the build command without any flags will automatically build the app for the operating system you are currently using:
 ```bash
 npm run build
 ```
+
+To build a specific bundle: `npm run build -- --bundles app` (or `dmg`, `msi`, `nsis`, `deb`, `appimage`, ...).

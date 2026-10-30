@@ -147,5 +147,12 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
-release/
-dist-electron/
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/
+
+# OS files
+.DS_Store
+Thumbs.db
+
